@@ -1,0 +1,32 @@
+{
+    "name": "arneo/arneo-wp-theme",
+    "description": "Wordpress starter theme for Bedrock boilerplate made by Arneo with <3",
+    "type": "wordpress-theme",
+    "require": {
+        "symfony/form": "^5.1@dev",
+        "symfony/translation": "^5.1@dev",
+        "symfony/twig-bridge": "^5.1@dev",
+        "wp-cli/wp-cli-bundle": "^2.1@dev"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.1@dev",
+        "symfony/error-handler": "^5.1@dev",
+        "squizlabs/php_codesniffer": "^3.0@dev",
+        "wp-coding-standards/wpcs": "dev-master",
+        "mayflower/php-codebrowser": "dev-master",
+        "pdepend/pdepend": "^2.0@dev",
+        "phploc/phploc": "^5.0",
+        "phpmd/phpmd": "dev-master",
+        "phpunit/php-code-coverage": "^7.0",
+        "phpunit/phpunit": "8.5.x-dev",
+        "sebastian/phpcpd": "^4.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Guillaume Lacourt",
+            "email": "guillaume.lacourt@arneogroup.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
