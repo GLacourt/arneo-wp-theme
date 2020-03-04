@@ -3,9 +3,9 @@
     "description": "Wordpress starter theme for Bedrock boilerplate made by Arneo with <3",
     "type": "wordpress-theme",
     "require": {
-        "symfony/form": "^5.1@dev",
-        "symfony/translation": "^5.1@dev",
-        "symfony/twig-bridge": "^5.1@dev",
+        "symfony/form": "^5.0.0",
+        "symfony/translation": "^5.0.0",
+        "symfony/twig-bridge": "^5.0.0",
         "wp-cli/wp-cli-bundle": "^2.1@dev"
     },
     "require-dev": {
