@@ -1,12 +1,14 @@
 {
     "name": "arneo/arneo-wp-theme",
-    "description": "Wordpress starter theme for Bedrock boilerplate made by Arneo with <3",
+    "description": "Wordpress starter theme for Bedrock boilerplate and timber library",
     "type": "wordpress-theme",
     "require": {
         "symfony/form": "^5.0.0",
         "symfony/translation": "^5.0.0",
         "symfony/twig-bridge": "^5.0.0",
-        "wp-cli/wp-cli-bundle": "^2.1@dev"
+        "wp-cli/wp-cli-bundle": "^2.1@dev",
+        "upstatement/routes": "dev-master",
+        "timber/timber": "dev-2.x"
     },
     "require-dev": {
         "symfony/var-dumper": "^5.0.0",
@@ -25,7 +27,7 @@
     "authors": [
         {
             "name": "Guillaume Lacourt",
-            "email": "guillaume.lacourt@arneogroup.com"
+            "email": "guillaume.lacourt@gmail.com"
         }
     ],
     "minimum-stability": "dev"

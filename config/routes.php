@@ -11,10 +11,10 @@
  *
  * Example:
  *    return [
- *        ':lang/blog/:taxonomy'            => 'category_action',
- *        ':lang/blog/:taxonomy/page/:page' => 'category_action',
- *        ':lang/blog/:category/:post'      => 'post_action',
- *        ':lang/:type/:list/:post'         => 'partner_action',
+ *        ':lang/blog/:taxonomy'            => [ $this, 'categoryAction' ],
+ *        ':lang/blog/:taxonomy/page/:page' => [ $this, 'categoryAction' ],
+ *        ':lang/blog/:category/:post'      => [ $this, 'postAction' ],
+ *        ':lang/:type/:list/:post'         => [ $this, 'partnerAction' ],
  *    ];
  */
 

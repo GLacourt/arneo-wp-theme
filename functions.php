@@ -15,8 +15,8 @@
 
 require_once __DIR__ . '/../../../../vendor/autoload.php';
 
-use App\ConfigLoader;
 use App\Arneo;
+use App\Router;
 use Symfony\Component\ErrorHandler\Debug;
 
 if ( isset( $_SERVER['APP_DEBUG'] ) && 'production' !== WP_ENV ) {
@@ -62,4 +62,5 @@ Timber::$dirname = array( 'templates', 'views' );
  */
 Timber::$autoescape = false;
 
-new Arneo( new ConfigLoader() );
+new Arneo();
+new Router();

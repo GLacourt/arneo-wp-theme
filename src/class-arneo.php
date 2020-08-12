@@ -60,14 +60,12 @@ class Arneo extends Site {
 	protected $translator;
 
 	/**
-	 * Mama constructor.
-	 *
-	 * @param ConfigLoader $loader ConfigLoader.
+	 * Arneo Theme constructor.
 	 *
 	 * @throws \Exception Default exception.
 	 */
-	public function __construct( ConfigLoader $loader ) {
-		$this->loader  = $loader;
+	public function __construct( ) {
+		$this->loader  = ConfigLoader::getInstance();
 		$this->request = Request::createFromGlobals();
 
 		Action::adds(
@@ -232,7 +230,8 @@ class Arneo extends Site {
 			call_user_func_array( 'register_taxonomy', $taxonomy );
 		}
 
-		foreach ( $this->loader->load( 'supports.php' ) as $feature ) {
+		/** Register What the theme can support */
+        foreach ( $this->loader->load( 'supports.php' ) as $feature ) {
 			call_user_func_array( 'add_theme_support', $feature );
 		}
 	}
@@ -242,7 +241,7 @@ class Arneo extends Site {
 	 *
 	 * @return string
 	 */
-	protected function getAcfPath() {
+	protected function getAcfPath(): string {
 		$paths = $this->loader->getPaths();
 
 		return sprintf( '%s/acf', array_shift( $paths ) );
