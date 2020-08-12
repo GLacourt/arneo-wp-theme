@@ -1,5 +1,5 @@
 {
-    "name": "arneo/arneo-wp-theme",
+    "name": "glacourt/timber-starter-theme",
     "description": "Wordpress starter theme for Bedrock boilerplate and timber library",
     "type": "wordpress-theme",
     "require": {
