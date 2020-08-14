@@ -15,6 +15,7 @@
 namespace App;
 
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\Config\Loader\DelegatingLoader;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Config\Loader\LoaderResolverInterface;
 
@@ -36,6 +37,9 @@ class ConfigLoader implements LoaderInterface {
 	 * @var FileLocator $locator Locator.
 	 */
 	protected $locator;
+
+
+	protected $loader;
 
 	/**
 	 * Context.
@@ -64,6 +68,10 @@ class ConfigLoader implements LoaderInterface {
 
 		$this->context = $this;
 		$this->locator = new FileLocator( CONFIG_PATHS );
+		$this->loader  = new DelegatingLoader([
+		    new PHPLoader( $this->locator ),
+            new YamlLoader( $this->locator ),
+        ]);
 	}
 
 	/**
@@ -90,40 +98,17 @@ class ConfigLoader implements LoaderInterface {
 	}
 
 	/**
-	 * Load a resource if exist.
-	 *
-	 * @param mixed  $resource Resource.
-	 * @param string $type     Type.
-	 *
-	 * @return mixed
-	 * @throws \Exception Exception.
+	 * @inheritDoc
 	 */
 	public function load( $resource, string $type = null ) {
-		$path = $this->locator->locate( $resource );
-
-		$load = \Closure::bind(
-			function ( $path ) {
-				return include $path;
-			},
-			$this->context,
-			( new \ReflectionObject( $this->context ) )->getName()
-		);
-
-		$this->context = $this;
-
-		return $load( $path );
+		return $this->loader->load( $resource, $type );
 	}
 
 	/**
-	 * Define which file are supported.
-	 *
-	 * @param string $resource Resource.
-	 * @param string $type     Type.
-	 *
-	 * @return bool
+	 * @inheritDoc
 	 */
-	public function supports( $resource, string $type = null ) {
-		return is_string( $resource ) && 'php' === pathinfo( $resource, PATHINFO_EXTENSION );
+	public function supports( $resource, string $type = null ): bool {
+		return $this->loader->supports( $resource, $type );
 	}
 
 	/**

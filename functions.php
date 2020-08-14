@@ -12,12 +12,14 @@
 /**
  * Entry file for Arneo WordPress Theme.
  */
+//var_dump(realpath(__DIR__ . '/')); die;
+require_once __DIR__ . '/../bedrock/workingdir/vendor/autoload.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
-require_once __DIR__ . '/../../../../vendor/autoload.php';
-
-use App\Arneo;
+use App\StarterSite;
 use App\Router;
 use Symfony\Component\ErrorHandler\Debug;
+use Timber\Timber;
 
 if ( isset( $_SERVER['APP_DEBUG'] ) && 'production' !== WP_ENV ) {
 	$debug = (bool) sanitize_text_field( wp_unslash( $_SERVER['APP_DEBUG'] ) );
@@ -33,7 +35,7 @@ define( 'THEME_VERSION', 1.0 );
  * This ensures that Timber is loaded and available as a PHP class.
  * If not, it gives an error message to help direct developers on where to activate
  */
-if ( ! class_exists( 'Timber' ) ) {
+if ( ! class_exists( Timber::class ) ) {
 
 	add_action(
 		'admin_notices',
@@ -62,5 +64,5 @@ Timber::$dirname = array( 'templates', 'views' );
  */
 Timber::$autoescape = false;
 
-new Arneo();
+new StarterSite();
 new Router();

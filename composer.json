@@ -5,10 +5,10 @@
     "require": {
         "symfony/form": "^5.0.0",
         "symfony/translation": "^5.0.0",
-        "symfony/twig-bridge": "^5.0.0",
         "wp-cli/wp-cli-bundle": "^2.1@dev",
-        "upstatement/routes": "dev-master",
-        "timber/timber": "dev-2.x"
+        "timber/timber": "dev-master",
+        "symfony/twig-bridge": "^5.2@dev",
+        "symfony/yaml": "^5.2@dev"
     },
     "require-dev": {
         "symfony/var-dumper": "^5.0.0",
@@ -30,5 +30,10 @@
             "email": "guillaume.lacourt@gmail.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src"
+        }
+    }
 }

@@ -3,7 +3,6 @@
  * Config file use to load CPTs.
  *
  * @package    WordPress
- * @subpackage Arneo WordPress Theme
  */
 
 /**

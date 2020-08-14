@@ -1,15 +1,14 @@
 <?php
 /**
- * Starter class for Arneo WordPress Theme
+ * Starter class for Timber WordPress Theme
  *
  * @package    WordPress
- * @subpackage Arneo WordPress Theme
- * @author     Arneo <dev@arneogroup.com>
+ * @author     Guillaume Lacourt <guillaume.lacourt@gmail.com>
  * @copyright  MIT
  */
 
 /**
- * Starter class for Arneo WordPress Theme
+ * Starter class for Timber WordPress Theme
  *
  * This class contains:
  * 1. A loader to separate configuration and loading code.
@@ -35,9 +34,9 @@ use Timber\Site;
 use Twig\RuntimeLoader\FactoryRuntimeLoader;
 
 /**
- * Class Arneo
+ * Class StarterSite
  */
-class Arneo extends Site {
+class StarterSite extends Site {
 	/**
 	 * Config Loader var.
 	 *
