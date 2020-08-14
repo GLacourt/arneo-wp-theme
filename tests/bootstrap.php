@@ -3,7 +3,6 @@
  * Bootstrap File for tests.
  *
  * @package    WordPress
- * @subpackage Arneo WordPress Theme
  */
 
 /**

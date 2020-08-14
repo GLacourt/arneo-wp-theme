@@ -13,8 +13,11 @@
  * @subpackage Arneo WordPress Theme 1.0.0
  */
 
+use Timber\Timber;
+use Timber\PostQuery;
+
 $context          = Timber::context();
-$context['posts'] = new Timber\PostQuery();
+$context['posts'] = new PostQuery();
 $context['foo']   = 'bar';
 $templates        = array( 'index.twig' );
 if ( is_home() ) {

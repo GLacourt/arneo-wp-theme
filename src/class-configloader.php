@@ -3,9 +3,8 @@
  * A config loader Class
  *
  * @package    WordPress
- * @subpackage Betam
- * @author     Adfab <dev@adfab.fr>
- * @copyright  All right reserved
+ * @author     Guillaume Lacourt <guillaume.lacourt@gmail.com>
+ * @copyright  MIT
  */
 
 /**
@@ -14,15 +13,19 @@
 
 namespace App;
 
+use App\Loader\ContextLoader;
+use App\Loader\ContextLoaderInterface;
+use App\Loader\PHPLoader;
+use App\Loader\YamlLoader;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\Loader\DelegatingLoader;
-use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\Config\Loader\LoaderResolver;
 use Symfony\Component\Config\Loader\LoaderResolverInterface;
 
 /**
  * Class ConfigLoader.
  */
-class ConfigLoader implements LoaderInterface {
+class ConfigLoader extends ContextLoader {
 
 	/**
 	 * Resolver property.
@@ -38,15 +41,10 @@ class ConfigLoader implements LoaderInterface {
 	 */
 	protected $locator;
 
-
-	protected $loader;
-
 	/**
-	 * Context.
-	 *
-	 * @var $context
+	 * @var DelegatingLoader $loader
 	 */
-	protected $context;
+	protected $loader;
 
 	/**
 	 * ConfigLoader constructor.
@@ -66,12 +64,15 @@ class ConfigLoader implements LoaderInterface {
 			define( 'CONFIG_PATHS', array( CONFIG_PATHS ) );
 		}
 
-		$this->context = $this;
-		$this->locator = new FileLocator( CONFIG_PATHS );
-		$this->loader  = new DelegatingLoader([
-		    new PHPLoader( $this->locator ),
-            new YamlLoader( $this->locator ),
-        ]);
+		$this->context  = $this;
+		$this->locator  = new FileLocator( CONFIG_PATHS );
+		$this->resolver = new LoaderResolver(
+			array (
+				new PHPLoader( $this->locator ),
+				new YamlLoader( $this->locator ),
+			)
+		);
+		$this->loader   = new DelegatingLoader( $this->resolver );
 	}
 
 	/**
@@ -85,22 +86,13 @@ class ConfigLoader implements LoaderInterface {
 	}
 
 	/**
-	 * Set the context for the next load
-	 *
-	 * @param object $context Context.
-	 *
-	 * @return $this
-	 */
-	public function setContext( $context ) {
-		$this->context = $context;
-
-		return $this;
-	}
-
-	/**
 	 * @inheritDoc
 	 */
 	public function load( $resource, string $type = null ) {
+		if ( false !== ( $loader = $this->resolver->resolve( $resource, $type ) ) && $loader instanceof ContextLoaderInterface ) {
+			$loader->setContext( $this->context );
+		}
+
 		return $this->loader->load( $resource, $type );
 	}
 
@@ -109,24 +101,6 @@ class ConfigLoader implements LoaderInterface {
 	 */
 	public function supports( $resource, string $type = null ): bool {
 		return $this->loader->supports( $resource, $type );
-	}
-
-	/**
-	 * Get the Resolver.
-	 *
-	 * @return LoaderResolverInterface $resolver.
-	 */
-	public function getResolver() {
-		return $this->resolver;
-	}
-
-	/**
-	 * Set the Resolver.
-	 *
-	 * @param LoaderResolverInterface $resolver Resolver.
-	 */
-	public function setResolver( LoaderResolverInterface $resolver ) {
-		$this->resolver = $resolver;
 	}
 
 	/**

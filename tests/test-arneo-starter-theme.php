@@ -3,7 +3,6 @@
  * Test.
  *
  * @package    WordPress
- * @subpackage Arneo WordPress Theme
  */
 
 /**

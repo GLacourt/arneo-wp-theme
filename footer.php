@@ -7,8 +7,6 @@
  * WooCommerce) you can delete this file and header.php
  *
  * @package  WordPress
- * @subpackage Arneo WordPress Theme
- * @subpackage Arneo WordPress Theme 1.0.0
  */
 
 $timberContext = $GLOBALS['timberContext']; // @codingStandardsIgnoreFile

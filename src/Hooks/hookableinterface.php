@@ -3,7 +3,7 @@
  * Hookable Interface
  *
  * @package    WordPress
- * @subpackage Arneo WordPress Theme
+ * @author     Guillaume Lacourt <guillaume.lacourt@gmail.com>
  */
 
 /**

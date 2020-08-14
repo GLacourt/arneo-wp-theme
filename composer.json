@@ -8,11 +8,11 @@
         "wp-cli/wp-cli-bundle": "^2.1@dev",
         "timber/timber": "dev-master",
         "symfony/twig-bridge": "^5.2@dev",
-        "symfony/yaml": "^5.2@dev"
+        "symfony/yaml": "^5.2@dev",
+        "symfony/error-handler": "^5.2@dev",
+        "symfony/var-dumper": "^5.2@dev"
     },
     "require-dev": {
-        "symfony/var-dumper": "^5.0.0",
-        "symfony/error-handler": "^5.0.0",
         "squizlabs/php_codesniffer": "^3.0@dev",
         "wp-coding-standards/wpcs": "dev-master",
         "mayflower/php-codebrowser": "dev-master",

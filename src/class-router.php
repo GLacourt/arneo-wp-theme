@@ -3,8 +3,7 @@
  * Router class for Arneo WordPress Theme
  *
  * @package    WordPress
- * @subpackage Arneo WordPress Theme
- * @author     Arneo <dev@arneogroup.com>
+ * @author     Guillaume Lacourt <guillaume.lacourt@gmail.com>
  * @copyright  MIT
  */
 

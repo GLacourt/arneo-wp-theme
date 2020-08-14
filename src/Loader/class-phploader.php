@@ -12,16 +12,16 @@
 
 namespace App\Loader;
 
-use Symfony\Component\Config\Loader\FileLoader;
-
 /**
  * Class PHP Loader.
  */
-class PHPLoader extends FileLoader {
+class PHPLoader extends ContextLoader {
 	/**
 	 * @inheritDoc
 	 */
 	public function load( $resource, string $type = null ) {
+		$path = $this->locator->locate( $resource );
+
 		$load = \Closure::bind(
 			function ( $resource ) {
 				return include $resource;
@@ -32,13 +32,13 @@ class PHPLoader extends FileLoader {
 
 		$this->context = $this;
 
-		return $load( $resource );
+		return $load( $path );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function supports( $resource, string $type = null ) {
+	public function supports( $resource, string $type = null ): bool {
 		return is_string( $resource ) && 'php' === pathinfo( $resource, PATHINFO_EXTENSION );
 	}
 }

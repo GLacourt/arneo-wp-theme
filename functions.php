@@ -14,19 +14,19 @@
  */
 //var_dump(realpath(__DIR__ . '/')); die;
 require_once __DIR__ . '/../bedrock/workingdir/vendor/autoload.php';
-require_once __DIR__ . '/vendor/autoload.php';
+//require_once __DIR__ . '/../../../../vendor/autoload.php';
 
 use App\StarterSite;
 use App\Router;
-use Symfony\Component\ErrorHandler\Debug;
 use Timber\Timber;
+use Symfony\Component\ErrorHandler\Debug;
 
 if ( isset( $_SERVER['APP_DEBUG'] ) && 'production' !== WP_ENV ) {
 	$debug = (bool) sanitize_text_field( wp_unslash( $_SERVER['APP_DEBUG'] ) );
 }
 
 if ( $debug ?? false ) {
-	Debug::enable();
+	\Symfony\Component\ErrorHandler\Debug::enable();
 }
 
 define( 'THEME_VERSION', 1.0 );

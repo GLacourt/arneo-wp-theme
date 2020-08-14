@@ -5,8 +5,6 @@
  * Methods for TimberHelper can be found in the /lib sub-directory
  *
  * @package  WordPress
- * @subpackage Arneo WordPress Theme
- * @subpackage Arneo WordPress Theme 1.0.0
  */
 
 $templates = array( 'search.twig', 'archive.twig', 'index.twig' );

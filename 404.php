@@ -5,8 +5,6 @@
  * Methods for TimberHelper can be found in the /functions sub-directory
  *
  * @package  WordPress
- * @subpackage Arneo WordPress Theme
- * @since    Timber 0.1
  */
 
 $context = Timber::context();
