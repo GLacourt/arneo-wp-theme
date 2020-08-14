@@ -220,8 +220,6 @@ class StarterSite extends Site {
 	 */
 	protected function load() {
 		/** Register Custom Post Types */
-		dump($this->loader->setContext( $this )->load( 'cpts.php' ));
-		dd($this->loader->setContext( $this )->load( 'cpts.yaml' ));
 		foreach ( $this->loader->setContext( $this )->load( 'cpts.php' ) as $name => $config ) {
 			register_post_type( $name, $config );
 		}

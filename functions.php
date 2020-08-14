@@ -26,7 +26,7 @@ if ( isset( $_SERVER['APP_DEBUG'] ) && 'production' !== WP_ENV ) {
 }
 
 if ( $debug ?? false ) {
-	\Symfony\Component\ErrorHandler\Debug::enable();
+	Debug::enable();
 }
 
 define( 'THEME_VERSION', 1.0 );
